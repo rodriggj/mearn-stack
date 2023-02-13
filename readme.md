@@ -1,11 +1,8 @@
 # Mearn Stack 
 
 ## Version History
-
-`main` branch
-+ 
-
-`sect_2`branch
++ `main` branch
++ `sect_2`branch
 
 
 
