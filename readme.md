@@ -245,7 +245,7 @@ export default Header
 
 --------
 
-Section 2 Lesson 7 - Product List
+## Section 2 Lesson 7 - Product List
 
 1. In the `proshop/frontend/public` folder create, import the `images` folder
 2. In the `proshop/frontend/src` folder, move the `products.js` file 
