@@ -244,3 +244,95 @@ export default Header
 16. Provide some spacing between the header and main elements on the `App.js` file, but adding a ```html<main className="py-3"></main>```.
 
 --------
+
+Section 2 Lesson 7 - Product List
+
+1. In the `proshop/frontend/public` folder create, import the `images` folder
+2. In the `proshop/frontend/src` folder, move the `products.js` file 
+3. Create a directory called `screens` under the `proshop/frontend/src` root. 
+4. In Screens create a file called `Homescreen.js`
+5. On `Homescreen.js` file input the following code: 
+```js
+import React from 'react'
+import { Row, Col } from 'react-bootstrap'
+import Product from './components/Product.js'
+import products from '../products.js'
+
+const HomeScreen = () => {
+  return (
+    <>
+        <h1>Latest Products</h1>
+        <Row>
+            {products.map((product)=> {
+                return <>
+                <Col sm={12} md={6} lg={4} xl={3}>
+                    <Product product={product} />
+                </Col>
+                </>
+
+            })}
+        </Row>
+    </>
+  )
+}
+
+export default HomeScreen
+```
+6. Now we can modify this code to create a componet for the `Product` vs. just having an H3. To do this lets create a component called `Product.js` and enter the following code. 
+```js
+import React from 'react'
+import { Card } from 'react-bootstrap'
+
+const Product = ({product}) => {
+  return (
+    <Card className="my-3 p-3 rounded">
+        <a href={`product/${product._id}`}>
+            <Card.Img src={ product.image } variant='top'/>
+        </a>
+
+    </Card>
+  )
+}
+
+export default Product
+```
+7. We can enhance the Product Card by adding additional information such as the title, ratings, & price. 
+```js
+import React from 'react'
+import { Card } from 'react-bootstrap'
+
+const Product = ({product}) => {
+  return (
+    <Card className="my-3 p-3 rounded">
+        <a href={`product/${product._id}`}>
+            <Card.Img src={ product.image } variant='top'/>
+        </a>
+
+        <Card.Body>
+          <a href={`product/${product._id}`}>
+            <Card.Title as='div'><strong>{product.name}</strong></Card.Title>
+          </a>
+        </Card.Body>
+
+        <Card.Text as='div'>
+          <div className="my-3">
+            {product.rating} from {product.numReviews} reviews
+          </div>
+        </Card.Text>
+
+        <Card.Text as='h3'>
+          ${product.price}
+        </Card.Text>
+    </Card>
+  )
+}
+
+export default Product
+```
+
+-------
+ 
+### Sect 2 Lesson 8 - Rating Component
+
+
+
