@@ -10,7 +10,6 @@
 
 --------
 
-
 ### Sect 2 Lesson 4 - Initial `init` & setup 
 1. Create a directory called `proshop`
 2. Create a directory called `proshop/frontend`
@@ -52,6 +51,7 @@ export default App;
 10. Finally delete everything that is in the current `src/index.css` file. Now when you see you brower rendering you should see an unstyled H1 element that says "Welcome to Proshop".
 11. Last change for this lesson. You can use `arrow functions` vs. the `function` keyword to creat a React Component. Recall you can also use Class Components. But the convention is to use Functional Components or Arrow Functions. Change the Function component to an arrow functioin on App.js. 
 
+[Back To Top]([Back to Top](https://github.com/rodriggj/mearn-stack#contents))
 -------
  
 ### Sect 2 Lesson 5 - Navbar
@@ -252,6 +252,7 @@ export default Header
 ```
 16. Provide some spacing between the header and main elements on the `App.js` file, but adding a ```html<main className="py-3"></main>```.
 
+[Back To Top]([Back to Top](https://github.com/rodriggj/mearn-stack#contents))
 --------
 
 ### Section 2 Lesson 6 - Product List
@@ -339,6 +340,7 @@ const Product = ({product}) => {
 export default Product
 ```
 
+[Back To Top]([Back to Top](https://github.com/rodriggj/mearn-stack#contents))
 -------
  
 ### Sect 2 Lesson 7 - Rating Component
@@ -457,6 +459,7 @@ Rating.propTypes = {
 export default Rating
 ```
 
+[Back To Top]([Back to Top](https://github.com/rodriggj/mearn-stack#contents))
 --------
 
 ### Section 2 Lesson 8 - Implementing React Router
@@ -593,6 +596,7 @@ const Header = () => {
 export default Header   
 ```
 
+[Back To Top]([Back to Top](https://github.com/rodriggj/mearn-stack#contents))
 ----------
 
 ### Section 2 Lesson 9 - Implementing Product Details Screen
@@ -626,4 +630,5 @@ export default Productscreen
 ```
 4. Now that we see that the product name is rendering for us we can begin our styling of the content we are returning. For example we can add a go back button and other visual elements we want to display. See the Productscreen.js file and the use of Cols, Rows, Cards, ListGroups, and ListGroup.Items.
 
+[Back To Top]([Back to Top](https://github.com/rodriggj/mearn-stack#contents))
 ---------
