@@ -245,7 +245,7 @@ export default Header
 
 --------
 
-## Section 2 Lesson 7 - Product List
+## Section 2 Lesson 6 - Product List
 
 1. In the `proshop/frontend/public` folder create, import the `images` folder
 2. In the `proshop/frontend/src` folder, move the `products.js` file 
@@ -332,7 +332,121 @@ export default Product
 
 -------
  
-### Sect 2 Lesson 8 - Rating Component
+### Sect 2 Lesson 7 - Rating Component
 
+1. Create a component file called `Rating.js`
+2. Import the `Rating` component into our `Product` component. 
+3. Ensure that the `Rating` component excepts 2 props, 1. ratings, & 2. numReviews
+4. Ensure that there is conditional logic to display the correct star graphics and " of # of reviews" suffix. 
+```js
+import React from 'react'
 
+const Rating = ({value, text}) => {
+  return (
+    <div className="rating">
+        <span>
+            <i className={value >= 1 ? 'fas fa-star' : value >= 0.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i className={value >= 2 ? 'fas fa-star' : value >= 1.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i className={value >= 3 ? 'fas fa-star' : value >= 2.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i className={value >= 4 ? 'fas fa-star' : value >= 3.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i className={value >= 5 ? 'fas fa-star' : value >= 4.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            {text ? text : ''}
+        </span>
+    </div>
+  )
+}
+
+export default Rating
+```
+5. We can add an additional prop to allow the user to specify the color of the stars being displayed. To do this add an additional prop to the Rating component, and pass in a color. To do this you can 1. pass a prop, or 2. set a default value for your props. 
+```js
+import React from 'react'
+import { propTypes } from 'prop-types'
+
+const Rating = ({value, text, color}) => {
+  return (
+    <div className="rating">
+        <span>
+            <i style={{color}} className={value >= 1 ? 'fas fa-star' : value >= 0.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 2 ? 'fas fa-star' : value >= 1.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 3 ? 'fas fa-star' : value >= 2.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 4 ? 'fas fa-star' : value >= 3.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 5 ? 'fas fa-star' : value >= 4.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            {text ? text : ''}
+        </span>
+    </div>
+  )
+}
+
+Rating.defaultProps = {
+    color: '#f8e825'   //yellow
+  }
+  
+export default Rating
+```
+
+6. Finally, we could have `typed` the prop types that we passed into Product by using `PropTypes`. 
+```js
+import React from 'react'
+import { propTypes } from 'prop-types'
+
+const Rating = ({value, text, color}) => {
+  return (
+    <div className="rating">
+        <span>
+            <i style={{color}} className={value >= 1 ? 'fas fa-star' : value >= 0.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 2 ? 'fas fa-star' : value >= 1.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 3 ? 'fas fa-star' : value >= 2.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 4 ? 'fas fa-star' : value >= 3.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            <i style={{color}} className={value >= 5 ? 'fas fa-star' : value >= 4.5 ? 'fas fa-star-half-alt' : 'far fa-star'}></i>
+        </span>
+        <span>
+            {text ? text : ''}
+        </span>
+    </div>
+  )
+}
+
+Rating.defaultProps = {
+    color: '#f8e825',   //yellow
+}
+
+Rating.propTypes = {
+    value: propTypes.number.isRequired, 
+    text: propTypes.string.isRequired, 
+    color: propTypes.string
+}
+
+export default Rating
+```
+
+--------
 
