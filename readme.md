@@ -450,3 +450,140 @@ export default Rating
 
 --------
 
+# Section 2 Lesson 8 - Implementing React Router
+
+1. Install `react-router-dom`
+```
+npm i react-router-dom react-router-bootstrap --save
+```
+2. Go to `App.js` to implement the router. First import the router, then wrap the application in the Router.
+```js
+import React from "react";
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Homescreen from "./screens/Homescreen";
+
+const App = () => {
+  return (
+    <Router>
+      <Header/>
+      <main className="py-3"> 
+        <Container>
+          <h1>Welcome to Proshop.</h1>
+          <Homescreen/>
+        </Container>
+      </main>
+      <Footer/>
+    </Router>
+  );
+}
+
+export default App;
+```
+3. Now instead of embedding Homescreen component we can now use Route. 
+```js
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Homescreen from "./screens/Homescreen";
+
+const App = () => {
+  return (
+    <Router>
+      <Header/>
+      <main className="py-3"> 
+        <Container>
+          <h1>Welcome to Proshop.</h1>
+          <Routes>
+            <Route path="/" element={<Homescreen/>}/>
+          </Routes>
+        </Container>
+      </main>
+      <Footer/>
+    </Router>
+  );
+}
+
+export default App;
+```
+> NOTE: Note the difference in syntax between react-router-dom v5 & v6. V6 now requires that you wrap the ```js<Route/>``` component in a ```js<Routes>``` parent component. It also requires that insteand of using the ```js<Route component={<Component/>}>``` that you now use ```js<Route element={<Component/>}>```. See [video](https://www.youtube.com/watch?v=k2Zk5cbiZhg&t=1s) for v5 to v6 differences. 
+4. To add a new route, lets create a new screen called `Product Screen`. So add this to your screens directory. And then import this new screen to your App.js file with an import statement.
+5. The other routing change we want to make here aside from <Routes> is to introduced the ```js<Link/>``` tag, which will replace the anchor tags. We currently have 2 anchor tags in our Homescreen for Cart and Signin. We can replace these with <Link>. The benefit of doing this is the React Router will continue to treat the site as a Single Page Application vs. with Anchor tag the server will make a new request/response cycle and re-render content from the server slowing down our application. We can also do this with all our Product links on Homescreen which are also using Anchor tags. Update the Products, Signin, and Cart as follows: 
+```js
+// Product.js file
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Card } from 'react-bootstrap'
+import Rating from './Rating'
+
+const Product = ({product}) => {
+  return (
+    <Card className="my-3 p-3 rounded">
+        <Link to={`product/${product._id}`}>
+            <Card.Img src={ product.image } variant='top'/>
+        </Link>
+
+        <Card.Body>
+          <Link to={`product/${product._id}`}>
+            <Card.Title as='div'><strong>{product.name}</strong></Card.Title>
+          </Link>
+        </Card.Body>
+
+        <Card.Text as='div'>
+          <div className="my-3">
+            {/* <Rating value={product.rating} text={` of ${product.numReviews} reviews`} color={'red'}/> */}
+            <Rating value={product.rating} text={` of ${product.numReviews} reviews`}/>
+          </div>
+        </Card.Text>
+
+        <Card.Text as='h3'>
+          ${product.price}
+        </Card.Text>
+    </Card>
+  )
+}
+
+export default Product
+```
+
+```js
+// Header.js file
+import React from 'react'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Navbar, Container, Nav } from 'react-bootstrap'
+
+const Header = () => {
+  return (
+    <header>
+        <Navbar bg="dark" variant='dark' expand="lg" collapseOnSelect>
+            <Container>
+              <LinkContainer to="/">
+                <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+              </LinkContainer>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="justify-content-end" style={{ width: "100%" }}>
+                  <LinkContainer to="/cart">
+                    <Nav.Link ><i className="fas fa-shopping-cart"></i>Cart</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/signin">
+                    <Nav.Link><i className="fas fa-user"></i>Sign In</Nav.Link>
+                  </LinkContainer>
+                </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>   
+    </header>
+  )
+}
+
+export default Header   
+```
+
+----------
+
+# Section 2 Lesson 9 - Implementing Product Details Screen
