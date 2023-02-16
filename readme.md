@@ -1,13 +1,15 @@
 # Mearn Stack 
 
 ## Contents
+### Front-End
 - [ ] [Section 2 Lesson 4 - Initial Setup](https://github.com/rodriggj/mearn-stack#sect-2-lesson-4---initial-init--setup)
 - [ ] [Section 2 Lesson 5 - Navbar](https://github.com/rodriggj/mearn-stack#sect-2-lesson-5---navbar)
 - [ ] [Section 2 Lesson 6 - Product List](https://github.com/rodriggj/mearn-stack#section-2-lesson-6---product-list)
 - [ ] [Section 2 Lesson 7 - Rating Component](https://github.com/rodriggj/mearn-stack#sect-2-lesson-7---rating-component)
 - [ ] [Section 2 Lesson 8 - Implementing React Router](https://github.com/rodriggj/mearn-stack#section-2-lesson-8---implementing-react-router)
 - [ ] [Section 2 Lesson 9 - Implementing Product Details Screen](https://github.com/rodriggj/mearn-stack#section-2-lesson-9---implementing-product-details-screen)
-- [ ] [Section 3 Lesson 12 - Implmenting Backend Routes]()
+### Back-End
+- [ ] [Section 3 Lesson 12 - Implmenting Backend Routes](https://github.com/rodriggj/mearn-stack#section-3-lesson-13---fetching-products-to-frontend-from-backend)
 
 --------
 
@@ -766,4 +768,5 @@ const Productscreen = () => {
 ```
 7. Finally we can delete the `proshop/frontend/product.js` file because nothing is being populated as result of this file. It is all coming from the backend api call now. 
 
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
