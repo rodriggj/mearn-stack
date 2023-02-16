@@ -450,7 +450,7 @@ export default Rating
 
 --------
 
-# Section 2 Lesson 8 - Implementing React Router
+### Section 2 Lesson 8 - Implementing React Router
 
 1. Install `react-router-dom`
 ```
@@ -586,4 +586,35 @@ export default Header
 
 ----------
 
-# Section 2 Lesson 9 - Implementing Product Details Screen
+### Section 2 Lesson 9 - Implementing Product Details Screen
+
+1. Open our Productscreen.js file
+2. Import the following: 
+```js
+import { Link } from 'react-router-dom'
+import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
+import Rating from '../components/Rating'
+import products from '../products'
+```
+3. Now we will use a higher order function called `find()`. We can also can access to params via the use of a component in react-router-dom. In v5 you could use match, but in v6 you have to use the useParams function. 
+```js
+import React from 'react'
+import { useParams } from 'react-router-dom'
+// import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
+// import Rating from '../components/Rating'
+import products from '../products'
+
+const Productscreen = () => {
+    const params = useParams()
+    const product = products.find((p) => p._id === params.id)
+
+  return (
+    <div>{product.name}</div>
+  )
+}
+
+export default Productscreen
+```
+4. Now that we see that the product name is rendering for us we can begin our styling of the content we are returning. For example we can add a go back button and other visual elements we want to display. See the Productscreen.js file and the use of Cols, Rows, Cards, ListGroups, and ListGroup.Items.
+
+---------
