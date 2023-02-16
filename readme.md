@@ -670,3 +670,100 @@ app.listen(PORT, () => {
 6. In the package.json file update the `scripts` section to have a `start` script that will run the server.js file via the node binary. 
 
 --------
+
+### Section 3 Lesson 13 - Fetching Products to Frontend from Backend
+
+1. Begin by navigating back to the root directory `proshop` and installing a dependency `axios`. This package will manage the request/response cycle for the fetch requests. 
+```
+npm i axios --save
+```
+2. In 2 different terminal sessions start the frontend (running on port 3000) and the backend (running on port 5000). 
+3. Currently our products are being rendered/supplied by our front-end, specifically the import statement on our Homescreen component ```jsimport products from '../products.js'```. We **don't want to do this** instead we want to fetch our product list from the backend API. So for now lets comment out or delete the import statement.  
+4. If we eliminate the product.js import, then how will we see our products. In React we have a construct called `state`. And `state` can be implemented at a Global or Component level. Ultimately we will need Products to be global level state and we will manage State with a tool called `Redux`. But for right now we will make Products a Component level concern and manage our Product state with React Hooks. Specifically we will use the `useState` hook. In our Homescreen component add the following code. 
+```js
+import React, { useState } from 'react'
+import { Row, Col } from 'react-bootstrap'
+// import products from '../products.js'
+import Product from '../components/Product.js'
+
+const HomeScreen = () => {
+  const [products, setProducts] = useState([])
+
+  return (
+    <>
+        <h1>Latest Products</h1>
+        <Row>
+            {products.map((product)=> {
+                return <>
+                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                    <Product key={product._id} product={product}/>
+                </Col>
+                </>
+
+            })}
+        </Row>
+    </>
+  )
+}
+  
+export default HomeScreen
+```
+5. We are going to use the `useState` hook and the `axios` package to make fetch calls to our backend to retrieve products from our API. Before doing this we will set up a proxy within the `proshop/frontend/package.json` script to avoid having to setup CORS or managing other fetch issues. To do this add the following to the package.json file
+```json
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "proxy": "http://127.0.0.1:5000",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+  // ...
+```
+5. Now that we are using the `useState` hook and have passed an empty array as a default value, there are no products displayed. To display products as we fetch them from our backend we need to use one more React hook, which is `useEffect`. This hook will take the fetched products, and display them back to the frontend. What ever we place inside `useEffect` function will run as soon as the page loads. 
+```js
+import React, { useEffect, useState } from 'react'
+import { Row, Col } from 'react-bootstrap'
+import axios from 'axios'
+// import products from '../products.js'
+import Product from '../components/Product.js'
+
+const HomeScreen = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const {data} = await axios.get('/api/products')
+      setProducts(data)
+    }
+    fetchProducts()
+  }, [])
+  // ...
+  ```
+6. Now we can do the same for our Products screen. Nav to Productscreen and replace our `products.js` reference with the useState, and useEffect methods. 
+```js
+import React, { useState, useEffect }from 'react'
+import { Link, useParams } from 'react-router-dom'
+import axios from 'axios'
+import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap'
+import Rating from '../components/Rating'
+// import products from '../products'
+
+const Productscreen = () => {
+    const params = useParams()
+    // const product = products.find((p) => p._id === params.id)
+
+    const [product, setProduct ] = useState({})
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+          const { data } = await axios.get(`/api/products/${params.id}`)
+          setProduct(data)
+        }
+        fetchProduct()
+      }, [])
+// ...
+```
+7. Finally we can delete the `proshop/frontend/product.js` file because nothing is being populated as result of this file. It is all coming from the backend api call now. 
+
+---------
