@@ -1,6 +1,15 @@
 # Mearn Stack 
 
-## Version History
+## Contents
+- [ ] [Section 2 Lesson 4 - Initial Setup](https://github.com/rodriggj/mearn-stack#sect-2-lesson-4---initial-init--setup)
+- [ ] [Section 2 Lesson 5 - Navbar](https://github.com/rodriggj/mearn-stack#sect-2-lesson-5---navbar)
+- [ ] [Section 2 Lesson 6 - Product List](https://github.com/rodriggj/mearn-stack#section-2-lesson-6---product-list)
+- [ ] [Section 2 Lesson 7 - Rating Component](https://github.com/rodriggj/mearn-stack#sect-2-lesson-7---rating-component)
+- [ ] [Section 2 Lesson 8 - Implementing React Router](https://github.com/rodriggj/mearn-stack#section-2-lesson-8---implementing-react-router)
+- [ ] [Section 2 Lesson 9 - Implementing Product Details Screen](https://github.com/rodriggj/mearn-stack#section-2-lesson-9---implementing-product-details-screen)
+
+--------
+
 
 ### Sect 2 Lesson 4 - Initial `init` & setup 
 1. Create a directory called `proshop`
@@ -245,7 +254,7 @@ export default Header
 
 --------
 
-## Section 2 Lesson 6 - Product List
+### Section 2 Lesson 6 - Product List
 
 1. In the `proshop/frontend/public` folder create, import the `images` folder
 2. In the `proshop/frontend/src` folder, move the `products.js` file 
