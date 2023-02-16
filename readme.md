@@ -7,6 +7,7 @@
 - [ ] [Section 2 Lesson 7 - Rating Component](https://github.com/rodriggj/mearn-stack#sect-2-lesson-7---rating-component)
 - [ ] [Section 2 Lesson 8 - Implementing React Router](https://github.com/rodriggj/mearn-stack#section-2-lesson-8---implementing-react-router)
 - [ ] [Section 2 Lesson 9 - Implementing Product Details Screen](https://github.com/rodriggj/mearn-stack#section-2-lesson-9---implementing-product-details-screen)
+- [ ] [Section 3 Lesson 12 - Implmenting Backend Routes]()
 
 --------
 
@@ -632,3 +633,40 @@ export default Productscreen
 
 [Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
+
+### Section 3 Lesson 12 - Implementing Backend Routes
+
+1. Create a folder called `proshop/backend`
+2. In the root folder `proshop`, run the `npm init` command to create a package.json file at the root level. 
+3. Run the command  `npm i express --save` at the root level to install the express module to the package.json file. 
+4. Create a dir called `proshop/backend/data` and copy the `products.js` file from `proshop/frontend/src` folder this folder. Don't move the file, copy the file or you will break the front end. 
+5. Now create a file called `proshop/backend/server.js`. In the `server.js` file input the following code. This code will provide 3 routes that will render the desired output we require. The first is just a test to validate a response is coming from the server. The second is a list of products coming from our products.js file, and the third route is a single product specified by the URL params. 
+```js
+const express = require('express') 
+const app = express()
+const products = require('./data/products')
+
+const PORT = process.env.PORT || 5000
+
+app.get('/', (req, res) => {
+    res.send('Hello from the backend API...')
+})
+
+app.get('/api/products', (req, res) => {
+    res.json(products)
+})
+
+app.get('/products/:id', (req, res) => {
+    const product = products.find((p) => p._id === req.params.id)
+    res.json(product)
+})
+
+app.listen(PORT, () => {
+    console.log(`Server is up and running on port ${PORT}`)
+})
+```
+> NOTE: That in the `products.js` file we are using plain JS to export the products array. Later we will use E6 Modules vs. the module.export syntax to retrieve output from the products.js file. Ultimately we will wire up MongoDB and extract our product content from the DB vs. a single file. 
+
+6. In the package.json file update the `scripts` section to have a `start` script that will run the server.js file via the node binary. 
+
+--------
