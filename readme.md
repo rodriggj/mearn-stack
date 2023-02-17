@@ -10,6 +10,10 @@
 - [ ] [Section 2 Lesson 9 - Implementing Product Details Screen](https://github.com/rodriggj/mearn-stack#section-2-lesson-9---implementing-product-details-screen)
 ### Back-End
 - [ ] [Section 3 Lesson 12 - Implmenting Backend Routes](https://github.com/rodriggj/mearn-stack#section-3-lesson-13---fetching-products-to-frontend-from-backend)
+- [ ] [Section 3 Lesson 13 - Fetching Products to Frontend from Backend](https://github.com/rodriggj/mearn-stack#section-3-lesson-13---fetching-products-to-frontend-from-backend)
+- [ ] [Section 3 Lesson 14 - Installing Nodemon & Concurrently](https://github.com/rodriggj/mearn-stack#section-3-lesson-14---installing-nodemon--concurrently)
+- [ ] [Section 3 Lesson 15 - Environment Variables](https://github.com/rodriggj/mearn-stack#section-3-lesson-15---environment-variables)
+- [ ] [Section 3 Lesson 16 - ES Modules vs Common JS](https://github.com/rodriggj/mearn-stack#section-3-lesson-16---es-modules-vs-common-js)
 
 --------
 
@@ -671,6 +675,7 @@ app.listen(PORT, () => {
 
 6. In the package.json file update the `scripts` section to have a `start` script that will run the server.js file via the node binary. 
 
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 --------
 
 ### Section 3 Lesson 13 - Fetching Products to Frontend from Backend
@@ -824,6 +829,8 @@ npm i -D nodemon concurrently --save
   }
 }
 ```
+
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
 
 ### Section 3 Lesson 15 - Environment Variables 
@@ -911,4 +918,5 @@ import products from './data/products.js'
 ```
 3. The final change we have to incorporate is to change the `module.export = products` syntax to `export default products` on the `proshop/backend/data/products.js` file.
 
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
