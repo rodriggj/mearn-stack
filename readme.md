@@ -824,3 +824,65 @@ npm i -D nodemon concurrently --save
   }
 }
 ```
+---------
+
+### Section 3 Lesson 15 - Environment Variables 
+
+1. We can use `environment variables` to store variables that will be used by portions of our code without having to hard code the values direclty into the code. Examples include secretes, url connection strings, etc. 
+2. To do this we will use a npm package called `dotenv`. Start by installing `dotenv` from the terminal command line.
+```
+npm i dotenv --save
+```
+3. Now in the `proshop/backend/server.js` file we need to configure our backend to use `dotenv` package. We can do so with the following code. 
+```js
+// proshop/backend/server.js file
+const express = require('express') 
+const app = express()
+const dotenv = require('dotenv')
+const products = require('./data/products')
+
+dotenv.config()
+// ...
+```
+4. Now we need a `.env` file so in the root of our project directory, create a file called .env. This is where we can place any env variables. 
+```
+NODE_ENV = development
+PORT = 5000
+```
+5. Now we can use the env variables in our `server.js` file.
+```js
+// server.js file 
+const express = require('express') 
+const app = express()
+const dotenv = require('dotenv')
+const products = require('./data/products')
+
+dotenv.config()
+
+const PORT = process.env.PORT || 5000
+
+app.get('/', (req, res) => {
+    res.send('Hello from the backend API...')
+})
+
+app.get('/api/products', (req, res) => {
+    res.json(products)
+})
+
+app.get('/api/products/:id', (req, res) => {
+    const product = products.find((p) => p._id === req.params.id)
+    res.json(product)
+})
+
+app.listen(PORT, () => {
+    console.log(`Server is running in ${process.env.NODE_ENV} mode and running on port ${PORT}`)
+})
+```
+6. Lastly, ensure that the .env file is in the .gitignore file so you do not commit it to an SCM where it can be read by others. 
+```
+node_modules/
+*/node_modules
+
+.env
+```
+--------
