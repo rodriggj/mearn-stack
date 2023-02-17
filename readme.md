@@ -770,3 +770,57 @@ const Productscreen = () => {
 
 [Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
+
+### Section 3 Lesson 14 - Installing Nodemon & Concurrently
+
+1. Stop both the frontend and backend terminal sessions (if running). 
+2. Navigate to the root folder of your project `proshop`. 
+3. Install nodemon & concurrenlty as Dev dependencies
+```
+npm i -D nodemon concurrently --save
+```
+4. Go to `proshop/package.json` to create a script that will start frontend and backend with nodemon. 
+```json
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./backend/server.js", 
+    "server": "nodemon /backend/server",
+    "client": "npm start --prefix frontend"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.3",
+    "express": "^4.18.2"
+  }
+}
+```
+5. Now if you run `npm run client` or `npm run server` you can get either of the 2 envirnoments to run, but they need to be started togehter. To do this we can add `concurrently`. To add `concurrenlty` go back into the root `package.json` file and add the following `dev` script. 
+```json
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./backend/server.js",
+    "server": "nodemon ./backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.3.3",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20"
+  }
+}
+```
