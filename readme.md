@@ -886,3 +886,29 @@ node_modules/
 .env
 ```
 --------
+
+### Section 3 Lesson 16 - ES Modules vs Common JS
+
+1. If you look at the NodeJS docs, you only need to add `type: module` into our package.json file to incorporate the use of modules. 
+```json
+// root package.json file
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+// ...
+```
+2. Now nav to the `proshop/backend/server.js` files. Here we need to update the `require` syntax (Common JS) to use the ES6 Modules syntax (import statements). This is already done on the frontend. We simply need to use in the backend. To do this 2 things: 1. use `import` statements & 2. Any non-packages that we import, we need to add the file suffix to the reference. 
+```js
+import express from 'express'
+const app = express()
+import dotenv from 'dotenv'
+import products from './data/products.js'
+// ...
+```
+3. The final change we have to incorporate is to change the `module.export = products` syntax to `export default products` on the `proshop/backend/data/products.js` file.
+
+---------
