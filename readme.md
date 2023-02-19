@@ -17,6 +17,7 @@
 ### MongoDB
 - [ ] [Section 4 Lesson 17 - MongoDB Atlas & Compass Setup](https://github.com/rodriggj/mearn-stack#section-4-lesson-17---mongodb-atlas--compass-setup)
 - [ ] [Section 4 Lesson 18 - Connecting to MongoDB from the Application](https://github.com/rodriggj/mearn-stack#section-4-lesson-18---connecting-to-mongodb-from-the-application)
+- [ ] [Section 4 Lesson 19 - Install terminal console colors package](https://github.com/rodriggj/mearn-stack#section-4-lesson-19---install-terminal-console-colors-package)
 --------
 
 ### Sect 2 Lesson 4 - Initial `init` & setup 
@@ -937,6 +938,7 @@ MONGODB_URI = mongodb+srv://rodriggj:<password>@mearn-stack-cluster.m8j5qzt.mong
 ```
 > NOTE: Be sure to swap out your password for the <password> placeholder.
 
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
 
 ### Section 4 Lesson 18 - Connecting to MongoDB from the Application
@@ -980,6 +982,8 @@ connectDB()
 // ...
 ```
 4. Now you should see in your console a message saying `MongoDB connected: ac-jzswp1q-shard-00-00.m8j5qzt.mongodb.net`. Which is our concat string with db host. 
+
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 --------
 
 ### Section 4 Lesson 19 - Install terminal console colors package
@@ -1025,5 +1029,5 @@ app.listen(PORT, () => {
     console.log(`Server is running in ${process.env.NODE_ENV} mode and running on port ${PORT}`.yellow.bold)
 })
 ```
-
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
