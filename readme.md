@@ -15,7 +15,8 @@
 - [ ] [Section 3 Lesson 15 - Environment Variables](https://github.com/rodriggj/mearn-stack#section-3-lesson-15---environment-variables)
 - [ ] [Section 3 Lesson 16 - ES Modules vs Common JS](https://github.com/rodriggj/mearn-stack#section-3-lesson-16---es-modules-vs-common-js)
 ### MongoDB
-- [ ] [Section 4 Lesson 17 - MongoDB Atlas & Compass Setup]()
+- [ ] [Section 4 Lesson 17 - MongoDB Atlas & Compass Setup](https://github.com/rodriggj/mearn-stack#section-4-lesson-17---mongodb-atlas--compass-setup)
+- [ ] [Section 4 Lesson 18 - Connecting to MongoDB from the Application](https://github.com/rodriggj/mearn-stack#section-4-lesson-18---connecting-to-mongodb-from-the-application)
 --------
 
 ### Sect 2 Lesson 4 - Initial `init` & setup 
