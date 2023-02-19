@@ -4,7 +4,7 @@ import axios from 'axios'
 // import products from '../products.js'
 import Product from '../components/Product.js'
 
-const HomeScreen = () => {
+const Homescreen = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -31,4 +31,4 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen
+export default Homescreen

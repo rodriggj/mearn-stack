@@ -23,7 +23,7 @@ const Productscreen = () => {
     <>
         <Link className="btn btn-dark rounded my-3" to="/">Go Back</Link>
         <Row>
-            <Col key={product._id} md={6}>
+            <Col md={6}>
                 <Image src={product.image} alt={product.name} fluid/>
             </Col>
             <Col md={3}>

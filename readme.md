@@ -981,3 +981,49 @@ connectDB()
 ```
 4. Now you should see in your console a message saying `MongoDB connected: ac-jzswp1q-shard-00-00.m8j5qzt.mongodb.net`. Which is our concat string with db host. 
 --------
+
+### Section 4 Lesson 19 - Install terminal console colors package
+
+1. We can install a package that will help us visually identify output on the console. The package is called `colors`. And we can use this package to highlight output on the terminal for example connection error messages. 
+
+2. To install the package execute the following command
+```
+npm i colors --save
+```
+
+3. Nav to `server.js` file an impor the colors package. 
+```js 
+import colors from 'colors'
+```
+
+4. Now go to the `config/db.js` file and we can use the colors package to highlight the connection string to our database. 
+```js
+import mongoose from 'mongoose'
+
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            useUnifiedTopology: true, 
+            useNewUrlParser: true, 
+            // useCreateIndex: true
+        })
+        console.log(`MongoDB connected: ${conn.connection.host}`.cyan.underline)
+    } catch (error) {
+        console.error(`Error: ${error.message}`.red.underline.bold)
+        process.exit(1)
+    }
+}
+
+export default connectDB
+```
+
+5. You can do the same in the `proshop/backend/server.js`. 
+```js
+// server.js file 
+// ...
+app.listen(PORT, () => {
+    console.log(`Server is running in ${process.env.NODE_ENV} mode and running on port ${PORT}`.yellow.bold)
+})
+```
+
+6. 
