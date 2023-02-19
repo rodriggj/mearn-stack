@@ -14,7 +14,8 @@
 - [ ] [Section 3 Lesson 14 - Installing Nodemon & Concurrently](https://github.com/rodriggj/mearn-stack#section-3-lesson-14---installing-nodemon--concurrently)
 - [ ] [Section 3 Lesson 15 - Environment Variables](https://github.com/rodriggj/mearn-stack#section-3-lesson-15---environment-variables)
 - [ ] [Section 3 Lesson 16 - ES Modules vs Common JS](https://github.com/rodriggj/mearn-stack#section-3-lesson-16---es-modules-vs-common-js)
-
+### MongoDB
+- [ ] [Section 4 Lesson 17 - MongoDB Atlas & Compass Setup]()
 --------
 
 ### Sect 2 Lesson 4 - Initial `init` & setup 
@@ -919,4 +920,20 @@ import products from './data/products.js'
 3. The final change we have to incorporate is to change the `module.export = products` syntax to `export default products` on the `proshop/backend/data/products.js` file.
 
 [Back To Top](https://github.com/rodriggj/mearn-stack#contents)
+---------
+
+### Section 4 Lesson 17 - MongoDB Atlas & Compass Setup
+
+1. Start by creating a MongoDB Atlas account [here](https://www.mongodb.com/)
+2. Create a cluster, and create a database and call the database `proshop` and create a `collection` and call the collection `products`. Now we can connect to this database through the GUI by choosing to connect with MongoDB Compass. Select this option and copy the connection string presented to you by MongoDB Atlas UI.
+3. Now download MongoDB Compass. This is a GUI to view your MongoDB Atlas cluster and the workloads on the cluster. To download go [here](https://www.mongodb.com/try/download/compass)
+4. Now that you've created the Cluster, DB, & Collection in MongoDB Atlas, when MongoDB Compass finishes installing you will be presented with a wizard to paste your connection string to MongoDB Atlas. Paste the connection string, and you should see your `proshop` db, and your `products` collection. 
+5. Take the connection string from MongoDB Atlas that says `Connect from your application` and place this string in your .env file. 
+```
+NODE_ENV = development
+PORT = 5000
+MONGODB_URI = mongodb+srv://rodriggj:<password>@mearn-stack-cluster.m8j5qzt.mongodb.net/proshop?retryWrites=true&w=majority
+```
+> NOTE: Be sure to swap out your password for the <password> placeholder.
+
 ---------
