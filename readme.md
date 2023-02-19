@@ -937,3 +937,46 @@ MONGODB_URI = mongodb+srv://rodriggj:<password>@mearn-stack-cluster.m8j5qzt.mong
 > NOTE: Be sure to swap out your password for the <password> placeholder.
 
 ---------
+
+### Section 4 Lesson 18 - Connecting to MongoDB from the Application
+
+1. There is a helper package we can use to manage our connection, models, schema, and document queries to MongoDB. This package is called `mongoose`. We will start by installing mongoose in our package.json file. Make sure you are in your root directory when executing the command `proshop`. 
+```
+npm i mongoose --save
+```
+2. Create a folder in our backend called `config`. And create a file called `db.js`. In the `db.js` file enter the following code.
+```js
+import mongoose from 'mongoose'
+
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            useUnifiedTopology: true, 
+            useNewUrlParser: true, 
+            useCreateIndex: true
+        })
+        console.log(`MongoDB connected: ${conn.connection.host}`)
+    } catch (error) {
+        console.error(`Error: ${error.message}`)
+        process.exit(1)
+    }
+}
+
+export default connectDB
+```
+3. We need to import `config/db.js` export into our `server.js` file. Do this by modifying the `server.js` file like this:
+```js
+// server.js file 
+import express from 'express'
+import dotenv from 'dotenv'
+import connectDB from './config/db.js'
+import products from './data/products.js'
+
+const app = express()
+
+dotenv.config()
+connectDB()
+// ...
+```
+4. Now you should see in your console a message saying `MongoDB connected: ac-jzswp1q-shard-00-00.m8j5qzt.mongodb.net`. Which is our concat string with db host. 
+--------

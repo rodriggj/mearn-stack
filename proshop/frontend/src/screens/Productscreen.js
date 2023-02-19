@@ -13,17 +13,17 @@ const Productscreen = () => {
 
     useEffect(() => {
         const fetchProduct = async () => {
-          const { data } = await axios.get(`/api/products/${params.id}`)
+          const { data } = await axios.get(`http://localhost:5000/api/products/${params.id}`)
           setProduct(data)
         }
         fetchProduct()
-      }, [])
+      }, [params.id])
 
   return (
     <>
         <Link className="btn btn-dark rounded my-3" to="/">Go Back</Link>
         <Row>
-            <Col md={6}>
+            <Col key={product._id} md={6}>
                 <Image src={product.image} alt={product.name} fluid/>
             </Col>
             <Col md={3}>
