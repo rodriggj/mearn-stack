@@ -1031,3 +1031,131 @@ app.listen(PORT, () => {
 ```
 [Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
+
+### Section 4 Lesson 20 - Modeling Data
+
+1. Create a directory in the `proshop/backend` directory called `models`. 
+2. Create a `userModel.js`, a `productModel.js`, & `orderModel.js` file and place in the models folder. 
+3. Start with the `userModel`. Enter the following in the `userModel.js` file. 
+```js
+import mongoose from 'mongoose'
+
+const userSchema = mongoose.Schema({
+    name: {
+        type: String, 
+        required: true
+    },
+    email: {
+        type: String, 
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String, 
+        required: true
+    },
+    isAdmin: {
+        type: Boolean, 
+        required: true,
+        default: false
+    }
+})
+```
+4. You can pass in a second list of arguements to the model, and then export the User model. 
+```js
+import mongoose from 'mongoose'
+
+const userSchema = mongoose.Schema({
+    name: {
+        type: String, 
+        required: true
+    },
+    email: {
+        type: String, 
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String, 
+        required: true
+    },
+    isAdmin: {
+        type: Boolean, 
+        required: true,
+        default: false
+    }
+}, {
+    timestamps: true
+})
+
+const User = mongoose.model('User', userSchema)
+
+export default User
+```
+5. We can also create relationships between models. For example if we move to the product model, each list of products will need to be associated with a User. So to make this reference in the Product model to the User model we can input code as follows in the productModel.js file. 
+```js
+import mongoose from 'mongoose'
+
+const productSchema = mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId, 
+        required: true,
+        ref: 'User'
+    },
+// ...
+```
+6. We can then modify the product model to accout for the data that we want to track for Products. 
+```js
+import mongoose from 'mongoose'
+
+const productSchema = mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId, 
+        required: true,
+        ref: 'User'
+    },
+// ...
+    countInStock: {
+        type: Number, 
+        required: true,
+        default: 0
+    },
+}, {
+    timestamps: true
+})
+
+const User = mongoose.model('User', userSchema)
+
+export default User
+```
+7. We will make one more association to our Reviews model, in this schema. In our Product schema we will include an Array of reviews. 
+```js
+import mongoose from 'mongoose'
+
+const reviewSchema = mongoose.Scheam({
+    name: {type: String, required: true},
+    rating: {type: Number, required: true},
+    comment: {type: String, required: true},
+}, {
+    timestamps: true
+})
+
+// ...
+
+const productSchema = mongoose.Schema({
+// ...
+
+    description: {
+        type: String, 
+        required: true,
+    },
+    reviews: [ reviewSchema ],
+    rating: {
+        type: Number, 
+        required: true,
+        default: 0
+    },
+// ...
+```
+8. Finally we need to complete the Order model. See the code in `orderModel.js`.
+---------
