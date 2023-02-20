@@ -18,6 +18,7 @@
 - [ ] [Section 4 Lesson 17 - MongoDB Atlas & Compass Setup](https://github.com/rodriggj/mearn-stack#section-4-lesson-17---mongodb-atlas--compass-setup)
 - [ ] [Section 4 Lesson 18 - Connecting to MongoDB from the Application](https://github.com/rodriggj/mearn-stack#section-4-lesson-18---connecting-to-mongodb-from-the-application)
 - [ ] [Section 4 Lesson 19 - Install terminal console colors package](https://github.com/rodriggj/mearn-stack#section-4-lesson-19---install-terminal-console-colors-package)
+- [ ] [Section 4 Lesson 20 - Modeling Data](https://github.com/rodriggj/mearn-stack#section-4-lesson-20---modeling-data)
 --------
 
 ### Sect 2 Lesson 4 - Initial `init` & setup 
@@ -1158,4 +1159,6 @@ const productSchema = mongoose.Schema({
 // ...
 ```
 8. Finally we need to complete the Order model. See the code in `orderModel.js`.
+
+[Back To Top](https://github.com/rodriggj/mearn-stack#contents)
 ---------
